@@ -1,11 +1,45 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorForeground">@color/colorForeground</item>
+    </style>
+
+    <style name="button_style" parent="Base.Widget.AppCompat.Button">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+        <item name="android:background">@drawable/buttons_selector</item>
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:text">@string/button_text</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Label's styles -->
+
+    <style name="label_style" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/labels_padding</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/labels_text_size</item>
+    </style>
+
+    <style name="view_params" parent="label_style">
+        <item name="android:text">@string/view_params</item>
+    </style>
+
+    <style name="image_params" parent="label_style">
+        <item name="android:text">@string/image_params</item>
+    </style>
+
+    <!-- EditText's styles -->
+
+    <style name="input_style" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/input_fields_text_size</item>
+        <item name="android:textColorHint">@color/colorForeground</item>
+        <item name="android:inputType">number</item>
     </style>
 
 </resources>

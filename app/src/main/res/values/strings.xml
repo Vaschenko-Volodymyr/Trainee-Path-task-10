@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Trainee-Path-task-10</string>
+    <string name="app_name">Задание № 10</string>
+
+    <string name="view_params">View params</string>
+    <string name="view_height">view height</string>
+    <string name="view_width">view width</string>
+
+    <string name="image_params">Image params</string>
+    <string name="image_height">image height</string>
+    <string name="image_width">image width</string>
+
+    <string name="button_text">Calculate</string>
+
+    <string name="no_data">You should input some data</string>
+    <string name="no_image_or_view">Nothing to do there</string>
+
+    <string name="error">Error…</string>
 </resources>
