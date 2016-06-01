@@ -14,5 +14,6 @@
     <string name="no_data">You should input some data</string>
     <string name="no_image_or_view">Nothing to do there</string>
 
-    <string name="error">Error…</string>
+    <string name="error">Error while operating data</string>
+    <string name="wrong_input_values">Wrong input values</string>
 </resources>

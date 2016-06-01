@@ -13,7 +13,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    public static final int ERROR_RES_ID = R.string.error;
+    private static final int ERROR_RES_ID = R.string.error;
+    private static final int WRONG_VALUES_RES_ID = R.string.wrong_input_values;
 
     private EditText mViewHeight;
     private EditText mViewWidth;
@@ -76,21 +77,26 @@ public class MainActivity extends AppCompatActivity {
         if (viewHeight.equals("") || viewWidth.equals("") ||
                 imageHeight.equals("") || imageWidth.equals("")) {
             Log.v(TAG, "<< Method: choseTextToShow()");
-            return getString(ERROR_RES_ID);
+            return getString(WRONG_VALUES_RES_ID);
         }
 
-        int viewHeightValue = Integer.valueOf(viewHeight);
-        int viewWidthValue = Integer.valueOf(viewWidth);
-        int imageHeightValue = Integer.valueOf(imageHeight);
-        int imageWidthValue = Integer.valueOf(imageWidth);
+        try {
+            int viewHeightValue = Integer.valueOf(viewHeight);
+            int viewWidthValue = Integer.valueOf(viewWidth);
+            int imageHeightValue = Integer.valueOf(imageHeight);
+            int imageWidthValue = Integer.valueOf(imageWidth);
 
-        int result = inSampleSize(viewHeightValue, viewWidthValue, imageHeightValue, imageWidthValue);
-        if (result == -1) {
+            int result = inSampleSize(viewHeightValue, viewWidthValue, imageHeightValue, imageWidthValue);
+
+            if (result == -1) {
+                return getString(WRONG_VALUES_RES_ID);
+            }
+
+            Log.v(TAG, "<< Method: choseTextToShow()");
+            return String.valueOf(result);
+        } catch (NumberFormatException e) {
             return getString(ERROR_RES_ID);
         }
-
-        Log.v(TAG, "<< Method: choseTextToShow()");
-        return String.valueOf(result);
     }
 
     private int inSampleSize(int viewHeight, int viewWidth, int imageHeight, int imageWidth) {
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (viewHeight <= 0 || viewWidth <= 0 ||
                 imageHeight <= 0 || imageWidth <= 0) {
+            Log.v(TAG, "<< Method: inSampleSize()");
             return -1;
         }
 
@@ -110,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 && (halfWidth / inSampleSize) > viewWidth) {
             inSampleSize *= 2;
         }
-
+        Log.v(TAG, "<< Method: inSampleSize()");
         return inSampleSize;
     }
 }
