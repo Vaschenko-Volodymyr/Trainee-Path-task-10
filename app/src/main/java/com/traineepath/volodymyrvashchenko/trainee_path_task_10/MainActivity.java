@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private int inSampleSize(int viewHeight, int viewWidth, int imageHeight, int imageWidth) {
+    int inSampleSize(int viewHeight, int viewWidth, int imageHeight, int imageWidth) {
         Log.v(TAG, ">> Method: inSampleSize()");
 
         if (viewHeight <= 0 || viewWidth <= 0 ||
