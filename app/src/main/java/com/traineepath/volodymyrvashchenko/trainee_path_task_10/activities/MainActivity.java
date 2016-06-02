@@ -1,4 +1,4 @@
-package com.traineepath.volodymyrvashchenko.trainee_path_task_10;
+package com.traineepath.volodymyrvashchenko.trainee_path_task_10.activities;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.traineepath.volodymyrvashchenko.trainee_path_task_10.R;
+import com.traineepath.volodymyrvashchenko.trainee_path_task_10.utils.BitmapUtils;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             int imageHeightValue = Integer.valueOf(imageHeight);
             int imageWidthValue = Integer.valueOf(imageWidth);
 
-            int result = inSampleSize(viewHeightValue, viewWidthValue, imageHeightValue, imageWidthValue);
+            int result = BitmapUtils.inSampleSize(viewHeightValue, viewWidthValue, imageHeightValue, imageWidthValue);
 
             if (result == -1) {
                 return getString(WRONG_VALUES_RES_ID);
@@ -97,27 +100,5 @@ public class MainActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return getString(ERROR_RES_ID);
         }
-    }
-
-    int inSampleSize(int viewHeight, int viewWidth, int imageHeight, int imageWidth) {
-        Log.v(TAG, ">> Method: inSampleSize()");
-
-        if (viewHeight <= 0 || viewWidth <= 0 ||
-                imageHeight <= 0 || imageWidth <= 0) {
-            Log.v(TAG, "<< Method: inSampleSize()");
-            return -1;
-        }
-
-        int inSampleSize = 1;
-
-        final int halfHeight = imageHeight / 2;
-        final int halfWidth = imageWidth / 2;
-
-        while ((halfHeight / inSampleSize) > viewHeight
-                && (halfWidth / inSampleSize) > viewWidth) {
-            inSampleSize *= 2;
-        }
-        Log.v(TAG, "<< Method: inSampleSize()");
-        return inSampleSize;
     }
 }
